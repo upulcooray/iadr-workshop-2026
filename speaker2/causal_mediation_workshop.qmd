@@ -9,7 +9,7 @@ format:
 ---
 
 <div style="text-align: center;">
-  <iframe src="Workshop_ST.pptx" width="100%" height="500px">
+  <iframe src="Workshop_ST.pdf" width="100%" height="500px">
   </iframe>
 </div>
 
