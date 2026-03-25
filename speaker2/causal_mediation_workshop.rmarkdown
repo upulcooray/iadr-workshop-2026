@@ -1,0 +1,58 @@
+---
+title: "caries_mediation_workshop"
+author: "Sharon Tan"
+date: "2026-03-20"
+---
+
+
+<div style="text-align: center;">
+  <iframe src="Workshop_ST.pptx" width="100%" height="500px">
+  </iframe>
+</div>
+
+
+```{r dataset}
+
+
+df <- readRDS("df.rds")
+
+# Install once (only if not already installed)
+if (!requireNamespace("mediation", quietly = TRUE)) {
+  install.packages("mediation", repos = "http://cran.us.r-project.org")
+}
+
+# Load it for use in the current R session
+library("mediation")
+```
+
+```{r mediation}
+# Load it for use in the current R session
+
+set.seed(2014)
+
+# Continuous outcome (dmft)
+med.fit <- lm(sugar_consumption ~ income_high + age_adult + gender + district_type, data = df)
+
+out.fit <- lm(dmft ~ sugar_consumption + income_high + age_adult + gender + district_type, data = df)
+
+med.out <- mediate(med.fit, out.fit, treat = "income_high", mediator = "sugar_consumption", robustSE = TRUE, sims = 1000)
+summary(med.out)
+
+# Sensitivity analysis for sequential ignorability
+sens.out <- medsens(med.out, rho.by = 0.1, effect.type = "indirect", sims = 100)
+summary(sens.out)
+
+# Treatment and mediator interaction, with continuous outcome (dmft)
+out.fit.interaction <- lm(dmft ~ sugar_consumption*income_high + age_adult + gender + district_type, data = df)
+
+med.out.interaction <- mediate(med.fit, out.fit.interaction, treat = "income_high", mediator = "sugar_consumption", robustSE = TRUE, sims = 1000)
+summary(med.out.interaction)
+
+test.TMint(med.out.interaction, conf.level= .95)
+
+# Binary outcome (caries yes/no)
+out.fit.logit <- glm(caries ~ sugar_consumption + income_high + age_adult + gender + district_type, data = df, family = binomial("logit"))
+
+med.out.logit <- mediate(med.fit, out.fit.logit, treat = "income_high", mediator = "sugar_consumption", robustSE = TRUE, sims = 1000)
+summary(med.out.logit)
+```
