@@ -1,0 +1,175 @@
+---
+title: "Modelling contextual effect"
+author: "Li Huihua"
+date: "2026-03-27"
+format:
+  html:
+    embed-resources: true
+    toc: true
+---
+
+<div style="text-align: center;">
+  <iframe src="Workshop_LH.pdf" width="100%" height="500px">
+  </iframe>
+</div>
+
+```{r setup, include=FALSE}
+## install packages
+packages <- c("tidyverse", "dplyr","lme4", "insight", "performance", "broom.mixed")
+# Install only what's missing
+new_packages <- packages[!(packages %in% installed.packages()[,"Package"])]
+if(length(new_packages) > 0) {
+  install.packages(new_packages, dependencies = TRUE, repos = "http://cran.us.r-project.org")
+}
+
+# Adjusted working directory path for relative project structure
+# setwd("~/Documents/Dental Centre Singapore/IADR 2026/IADR workshop/Data")
+```
+
+```{r data}
+#| message: false
+#| warning: false
+library(tidyverse)    #Data prep/exploration
+library(dplyr)        # data manipulation
+library(lme4)         # glmer multilevel models
+library(performance)  # icc() — easiest VPC for glmer binomial
+library(broom.mixed)   # tidy() for model summaries
+
+
+## Read data relative to this document
+Pain <- readRDS("pain_workshop.rds")
+str(Pain)
+```
+
+## Multilevel Models
+
+```{r models}
+#| message: false
+#| warning: false
+
+##Model 0: Two-level variance-components binomial model
+M0 <- glmer(dental_pain ~ 1 + (1|school_id), data = Pain, 
+            family = binomial(link="logit"))
+
+# Model 1: Two-level Random Intercept binomial model with exposure only
+M1 <- update(M0, . ~ . + high_sugar)
+
+# Model 2: Two-level Random Intercept binomial model adjusted 
+##by level 1 confounders
+M2 <- update(M1, . ~ . + age_c + sex + family_income)
+
+# Model 3: Two-level Random Intercept binomial model adjusted by 
+##all confounders
+M3 <- update(M2, . ~ . + school_type)
+
+## Results of M0
+summary(M0)
+## probability of having pain 
+plogis(fixef(M0))
+#Observed prevalence
+mean(Pain$dental_pain)
+```
+
+### Variance Partition Coefficient (VPC)
+
+```{r vpc}
+#| message: false
+#| warning: false
+
+# manual VPC in a tidy way
+var_u <- VarCorr(M0)$school_id[1,1]
+vpc <- var_u / (var_u + pi^2 / 3)
+var_u
+vpc
+
+# VPC with performance 
+icc(M0)  
+
+# Compare VPCs
+models <- list(M0 = M0, M1 = M1, M2 = M2, M3 = M3)
+
+vpc_table <- map(names(models), ~ tibble(
+  Model       = .x,
+  VPC_percent = round(icc(models[[.x]])$ICC_adjusted[1] * 100, 1),
+  School_Var  = VarCorr(models[[.x]])$school_id[1, 1]
+)) %>% list_rbind()
+
+vpc_table %>% print()
+```
+
+### Model Performance
+
+```{r performance}
+#| message: false
+#| warning: false
+
+# Compare model performance
+comparison <- data.frame(
+  Model = names(models),
+  AIC   = sapply(models, AIC),
+  BIC   = sapply(models, BIC),
+  logLik = sapply(models, function(m) as.numeric(logLik(m))),
+  df = sapply(models, function(m) attr(logLik(m), "df"))
+) %>%
+  mutate(
+    delta_AIC = AIC - min(AIC),
+    delta_BIC = BIC - min(BIC)
+  ) %>%
+  arrange(AIC)
+
+print(comparison)
+```
+
+### Fixed Effects
+
+```{r fixed_effects}
+#| message: false
+#| warning: false
+
+# Fixed effects in a nice table
+tidy(M0, conf.int = TRUE, exponentiate = TRUE) %>%   # ORs with 95% CIs
+  filter(effect == "fixed") %>% 
+  dplyr::select(term, estimate, std.error, statistic, p.value, conf.low, conf.high) %>% 
+  mutate(across(where(is.numeric), ~ round(., 3))) 
+
+tidy(M1, conf.int = TRUE, exponentiate = TRUE) %>%   
+  filter(effect == "fixed") %>% 
+  dplyr::select(term, estimate, std.error, statistic, p.value, conf.low, conf.high) %>% 
+  mutate(across(where(is.numeric), ~ round(., 3))) 
+
+tidy(M2, conf.int = TRUE, exponentiate = TRUE) %>%   
+  filter(effect == "fixed") %>% 
+  dplyr::select(term, estimate, std.error, statistic, p.value, conf.low, conf.high) %>% 
+  mutate(across(where(is.numeric), ~ round(., 3))) 
+
+tidy(M3, conf.int = TRUE, exponentiate = TRUE) %>%   
+  filter(effect == "fixed") %>% 
+  dplyr::select(term, estimate, std.error, statistic, p.value, conf.low, conf.high) %>% 
+  mutate(across(where(is.numeric), ~ round(., 3))) 
+```
+
+### Specific Contextual Effect
+
+```{r contextual_effect}
+#| message: false
+#| warning: false
+
+# MOR: for use with the multilevel logistic regression model
+# var_u denote the estimate variance of the random effects.
+var_u=VarCorr(M3)$school_id[1,1]
+MOR <- exp(((2*var_u)^0.5)*qnorm(0.75))
+MOR
+```
+
+## Single Level Model
+
+```{r single_level}
+#| message: false
+#| warning: false
+
+M_SL <- glm(dental_pain ~ high_sugar + age_c + sex + family_income + school_type, 
+            data = Pain, family = binomial(link="logit"))
+tidy(M_SL, conf.int = TRUE, exponentiate = TRUE) %>%   
+  dplyr::select(term, estimate, std.error) %>% 
+  mutate(across(where(is.numeric), ~ round(., 3))) 
+```

@@ -14,6 +14,7 @@ format:
 </div>
 
 ```{r dataset}
+#| echo: false
 
 
 df <- readRDS("df.rds")
