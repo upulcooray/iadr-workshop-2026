@@ -6,11 +6,17 @@ format:
   html:
     embed-resources: true
     toc: true
+resources:
+  - "IADR_ContextualEffects_Handson_27March2026.pdf"
 ---
 
 <div style="text-align: center;">
   <iframe src="IADR_ContextualEffects_Handson_27March2026.pdf" width="100%" height="500px">
+    <p>Your browser does not support PDFs. <a href="IADR_ContextualEffects_Handson_27March2026.pdf">Download the PDF</a>.</p>
   </iframe>
+  <p style="font-size: 0.9em; margin-top: 10px;">
+    <i>Having trouble viewing? <a href="IADR_ContextualEffects_Handson_27March2026.pdf" target="_blank">Click here to open or download the PDF directly.</a></i>
+  </p>
 </div>
 
 ```{r setup, include=FALSE}
