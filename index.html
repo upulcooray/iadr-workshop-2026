@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Workshop — Course Materials</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --cream:   #FAF8F4;
-      --white:   #FFFFFF;
-      --ink:     #1A1916;
-      --mid:     #6B6860;
-      --rule:    #E5E2DC;
-      --accent:  #2D6A4F;
-      --accent2: #74C69D;
-      --shadow:  0 2px 16px rgba(26,25,22,.07);
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --cream: #FAF8F4;
+      --white: #FFFFFF;
+      --ink: #1A1916;
+      --mid: #6B6860;
+      --rule: #E5E2DC;
+      --accent: #2D6A4F;
+      --accent2: #74C69D;
+      --shadow: 0 2px 16px rgba(26, 25, 22, .07);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--cream);
@@ -33,111 +45,252 @@
       background: var(--white);
       border-bottom: 1px solid var(--rule);
       padding: 0 clamp(1.5rem, 5vw, 4rem);
-      position: sticky; top: 0; z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+
     .header-inner {
-      max-width: 960px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       height: 60px;
     }
-    .logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: var(--accent); }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+
     .header-tag {
-      font-size: .75rem; font-weight: 500; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--mid);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--mid);
     }
 
     /* ── HERO ── */
     .hero {
-      max-width: 960px; margin: 0 auto;
+      max-width: 960px;
+      margin: 0 auto;
       padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 5vw, 3.5rem);
       border-bottom: 1px solid var(--rule);
     }
+
     .eyebrow {
-      display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .75rem; font-weight: 500; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
     }
-    .eyebrow::before { content:''; display:block; width:22px; height:2px; background:var(--accent); }
+
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--accent);
+    }
+
     h1 {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(2.2rem, 5vw, 3.4rem);
-      line-height: 1.12; font-weight: 400; max-width: 620px; margin-bottom: 1.2rem;
+      line-height: 1.12;
+      font-weight: 400;
+      max-width: 620px;
+      margin-bottom: 1.2rem;
     }
-    h1 em { font-style: italic; color: var(--accent); }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
     .hero-sub {
-      font-size: 1.05rem; color: var(--mid); font-weight: 300;
-      max-width: 540px; line-height: 1.65; margin-bottom: 2rem;
+      font-size: 1.05rem;
+      color: var(--mid);
+      font-weight: 300;
+      max-width: 540px;
+      line-height: 1.65;
+      margin-bottom: 2rem;
     }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: .85rem; color: var(--mid); }
-    .hero-meta span { display: flex; align-items: center; gap: .35rem; }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: .85rem;
+      color: var(--mid);
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
 
     /* ── LEGEND BAR ── */
     .tip-bar {
-      max-width: 960px; margin: 0 auto;
+      max-width: 960px;
+      margin: 0 auto;
       padding: 1rem clamp(1.5rem, 5vw, 4rem);
       border-bottom: 1px solid var(--rule);
-      display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
+
     .tip-bar-label {
-      font-size: .7rem; font-weight: 500; letter-spacing: .09em;
-      text-transform: uppercase; color: var(--mid);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--mid);
     }
-    .legend { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-    .legend-item { display: flex; align-items: center; gap: .45rem; font-size: .78rem; color: var(--mid); }
+
+    .legend {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .78rem;
+      color: var(--mid);
+    }
+
     .badge {
-      display: inline-flex; align-items: center; gap: .28rem;
-      border-radius: 5px; padding: .2rem .5rem;
-      font-size: .68rem; font-weight: 600; letter-spacing: .03em; white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: .28rem;
+      border-radius: 5px;
+      padding: .2rem .5rem;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+      white-space: nowrap;
     }
-    .badge-view  { background: #E8F5E9; color: #2D6A4F; border: 1px solid #B7E4C7; }
-    .badge-dl    { background: #FFF8E1; color: #7B5E00; border: 1px solid #FFE082; }
-    .badge-slide { background: #EDE7F6; color: #5E35B1; border: 1px solid #CE93D8; }
+
+    .badge-view {
+      background: #E8F5E9;
+      color: #2D6A4F;
+      border: 1px solid #B7E4C7;
+    }
+
+    .badge-dl {
+      background: #FFF8E1;
+      color: #7B5E00;
+      border: 1px solid #FFE082;
+    }
+
+    .badge-slide {
+      background: #EDE7F6;
+      color: #5E35B1;
+      border: 1px solid #CE93D8;
+    }
 
     /* ── SECTION LABEL ── */
     .section-label {
-      max-width: 960px; margin: 0 auto;
+      max-width: 960px;
+      margin: 0 auto;
       padding: 2.4rem clamp(1.5rem, 5vw, 4rem) 1rem;
-      font-size: .72rem; font-weight: 500; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--mid);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mid);
       border-bottom: 1px solid var(--rule);
     }
 
     /* ── INTRO CARD ── */
     .intro-wrap {
-      max-width: 960px; margin: 0 auto;
+      max-width: 960px;
+      margin: 0 auto;
       padding: 1.4rem clamp(1.5rem, 5vw, 4rem);
       border-bottom: 1px solid var(--rule);
     }
+
     .intro-card {
-      background: var(--white); border: 1px solid var(--rule);
-      border-radius: 12px; padding: 1.8rem 2rem;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
       box-shadow: var(--shadow);
-      display: flex; align-items: flex-start; gap: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
     }
+
     .intro-icon {
-      width: 44px; height: 44px; border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
       background: linear-gradient(135deg, #D8F3DC, #B7E4C7);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
+
     .intro-content h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem; font-weight: 400; margin-bottom: .3rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: .3rem;
     }
-    .intro-content p { font-size: .88rem; color: var(--mid); line-height: 1.6; margin-bottom: 1rem; }
-    .file-list { display: flex; flex-wrap: wrap; gap: .55rem; }
+
+    .intro-content p {
+      font-size: .88rem;
+      color: var(--mid);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .file-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+    }
+
     .pill {
-      display: inline-flex; align-items: center; gap: .4rem;
-      background: var(--cream); border: 1px solid var(--rule);
-      border-radius: 999px; padding: .38rem .85rem;
-      font-size: .78rem; font-weight: 500; color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: .38rem .85rem;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--ink);
       text-decoration: none;
       transition: background .18s, border-color .18s, transform .15s;
     }
-    .pill:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-1px); }
+
+    .pill:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
 
     /* ── SPEAKERS GRID ── */
     .speakers-wrap {
-      max-width: 960px; margin: 0 auto;
+      max-width: 960px;
+      margin: 0 auto;
       padding: 1.4rem clamp(1.5rem, 5vw, 4rem) 2rem;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -146,329 +299,541 @@
 
     /* ── SPEAKER CARD ── */
     .speaker-card {
-      background: var(--white); border: 1px solid var(--rule);
-      border-radius: 14px; padding: 1.6rem 1.6rem 1.4rem;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      padding: 1.6rem 1.6rem 1.4rem;
       box-shadow: var(--shadow);
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
       transition: transform .2s, box-shadow .2s;
     }
-    .speaker-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,25,22,.1); }
-    .speaker-number {
-      font-size: .7rem; font-weight: 500; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: .5rem;
+
+    .speaker-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(26, 25, 22, .1);
     }
+
+    .speaker-number {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+
     .speaker-card h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem; font-weight: 400; margin-bottom: .25rem; line-height: 1.2;
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: .25rem;
+      line-height: 1.2;
     }
-    .speaker-card .topic { font-size: .85rem; color: var(--mid); font-style: italic; margin-bottom: 1.1rem; }
-    .divider { height: 1px; background: var(--rule); margin-bottom: 1.1rem; }
+
+    .speaker-card .topic {
+      font-size: .85rem;
+      color: var(--mid);
+      font-style: italic;
+      margin-bottom: 1.1rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--rule);
+      margin-bottom: 1.1rem;
+    }
+
     .files-label {
-      font-size: .7rem; font-weight: 500; letter-spacing: .09em;
-      text-transform: uppercase; color: var(--mid); margin-bottom: .6rem;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: .6rem;
     }
-    .speaker-files { display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+
+    .speaker-files {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      flex: 1;
+    }
 
     /* ── FILE ROW ── */
     .file-row {
-      display: flex; align-items: center;
-      background: var(--cream); border: 1px solid var(--rule);
-      border-radius: 9px; padding: .65rem .85rem; gap: .6rem;
+      display: flex;
+      align-items: center;
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-radius: 9px;
+      padding: .65rem .85rem;
+      gap: .6rem;
     }
-    .file-row-info { flex: 1; min-width: 0; }
-    .file-row-title { font-size: .82rem; font-weight: 500; color: var(--ink); margin-bottom: .2rem; }
-    .file-row-sub { font-size: .7rem; color: var(--mid); }
-    .file-row-actions { display: flex; gap: .35rem; flex-shrink: 0; }
 
-    .btn-view, .btn-dl, .btn-slide {
-      display: inline-flex; align-items: center; gap: .28rem;
-      border-radius: 6px; padding: .3rem .65rem;
-      font-size: .7rem; font-weight: 600; letter-spacing: .02em;
-      text-decoration: none; white-space: nowrap;
+    .file-row-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .file-row-title {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: .2rem;
+    }
+
+    .file-row-sub {
+      font-size: .7rem;
+      color: var(--mid);
+    }
+
+    .file-row-actions {
+      display: flex;
+      gap: .35rem;
+      flex-shrink: 0;
+    }
+
+    .btn-view,
+    .btn-dl,
+    .btn-slide {
+      display: inline-flex;
+      align-items: center;
+      gap: .28rem;
+      border-radius: 6px;
+      padding: .3rem .65rem;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      text-decoration: none;
+      white-space: nowrap;
       transition: opacity .15s, transform .15s;
     }
-    .btn-view  { background: #E8F5E9; color: #2D6A4F; border: 1px solid #B7E4C7; }
-    .btn-dl    { background: #FFF8E1; color: #7B5E00; border: 1px solid #FFE082; }
-    .btn-slide { background: #EDE7F6; color: #5E35B1; border: 1px solid #CE93D8; }
-    .btn-view:hover, .btn-dl:hover, .btn-slide:hover { opacity: .8; transform: translateY(-1px); }
+
+    .btn-view {
+      background: #E8F5E9;
+      color: #2D6A4F;
+      border: 1px solid #B7E4C7;
+    }
+
+    .btn-dl {
+      background: #FFF8E1;
+      color: #7B5E00;
+      border: 1px solid #FFE082;
+    }
+
+    .btn-slide {
+      background: #EDE7F6;
+      color: #5E35B1;
+      border: 1px solid #CE93D8;
+    }
+
+    .btn-view:hover,
+    .btn-dl:hover,
+    .btn-slide:hover {
+      opacity: .8;
+      transform: translateY(-1px);
+    }
 
     /* ── DOWNLOAD ALL ── */
     .dl-all-wrap {
-      max-width: 960px; margin: 0 auto;
+      max-width: 960px;
+      margin: 0 auto;
       padding: .5rem clamp(1.5rem, 5vw, 4rem) 3.5rem;
-      display: flex; justify-content: center;
+      display: flex;
+      justify-content: center;
     }
+
     .dl-all-btn {
-      display: inline-flex; align-items: center; gap: .6rem;
-      background: var(--accent); color: #fff;
-      border: none; border-radius: 10px;
-      padding: .85rem 2rem; font-size: .9rem; font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: .85rem 2rem;
+      font-size: .9rem;
+      font-weight: 500;
       font-family: 'DM Sans', sans-serif;
-      cursor: pointer; text-decoration: none;
+      cursor: pointer;
+      text-decoration: none;
       transition: background .18s, transform .15s;
     }
-    .dl-all-btn:hover { background: #235C42; transform: translateY(-2px); }
+
+    .dl-all-btn:hover {
+      background: #235C42;
+      transform: translateY(-2px);
+    }
 
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--rule);
       padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
-      text-align: center; font-size: .78rem; color: var(--mid);
+      text-align: center;
+      font-size: .78rem;
+      color: var(--mid);
     }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .hero        { animation: fadeUp .55s ease both; }
-    .intro-card  { animation: fadeUp .55s .1s ease both; }
-    .speaker-card { animation: fadeUp .5s ease both; }
-    .speaker-card:nth-child(2) { animation-delay: .08s; }
-    .speaker-card:nth-child(3) { animation-delay: .16s; }
+
+    .hero {
+      animation: fadeUp .55s ease both;
+    }
+
+    .intro-card {
+      animation: fadeUp .55s .1s ease both;
+    }
+
+    .speaker-card {
+      animation: fadeUp .5s ease both;
+    }
+
+    .speaker-card:nth-child(2) {
+      animation-delay: .08s;
+    }
+
+    .speaker-card:nth-child(3) {
+      animation-delay: .16s;
+    }
 
     @media (max-width: 600px) {
-      .speakers-wrap { grid-template-columns: 1fr; }
-      .intro-card { flex-direction: column; gap: 1rem; }
-      .tip-bar { gap: .8rem; }
+      .speakers-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-card {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .tip-bar {
+        gap: .8rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="header-inner">
-    <span class="logo">Workshop Materials</span>
-    <span class="header-tag">Course Resources</span>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="eyebrow">Hands-On Workshop</div>
-  <h1>Data-Driven Advocacy for Effective and Equitable Oral Health <em>Policies</em></h1>
-  <p class="hero-sub">
-    Browse rendered analyses directly in your browser — no R installation needed.
-    Download the R Markdown source files to run and modify the code yourself.
-  </p>
-  <div class="hero-meta">
-    <span>
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      Chair: Ankur Singh
-    </span>
-    <span>
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Fri, Mar 27 | 2:00pm - 3:30pm
-    </span>
-    <span>
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      Room 31A - San Diego Convention Center
-    </span>
-    <span>
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
-      4 Speakers
-    </span>
-  </div>
-</section>
-
-<!-- LEGEND -->
-<div class="tip-bar">
-  <span class="tip-bar-label">Button guide</span>
-  <div class="legend">
-    <div class="legend-item">
-      <span class="badge badge-view">
-        <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-        View
-      </span>
-      Opens rendered HTML — no R needed
+  <header>
+    <div class="header-inner">
+      <span class="logo">Workshop Materials</span>
+      <span class="header-tag">Course Resources</span>
     </div>
-    <div class="legend-item">
-      <span class="badge badge-dl">
-        <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        .Rmd
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Hands-On Workshop</div>
+    <h1>Data-Driven Advocacy for Effective and Equitable Oral Health <em>Policies</em></h1>
+    <p class="hero-sub">
+      Browse rendered analyses directly in your browser — no R installation needed.
+      Download the R Markdown source files to run and modify the code yourself.
+    </p>
+    <div class="hero-meta">
+      <span>
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        Chair: Ankur Singh
       </span>
-      Download source to run locally
+      <span>
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+        Fri, Mar 27 | 2:00pm - 3:30pm
+      </span>
+      <span>
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+          <circle cx="12" cy="9" r="2.5" />
+        </svg>
+        Room 31A - San Diego Convention Center
+      </span>
+      <span>
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="9" cy="7" r="4" />
+          <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          <path d="M21 21v-2a4 4 0 0 0-3-3.85" />
+        </svg>
+        4 Speakers
+      </span>
     </div>
-    <div class="legend-item">
-      <span class="badge badge-slide">
-        <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        Slides
-      </span>
-      Download presentation
+  </section>
+
+  <!-- LEGEND -->
+  <div class="tip-bar">
+    <span class="tip-bar-label">Button guide</span>
+    <div class="legend">
+      <div class="legend-item">
+        <span class="badge badge-view">
+          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <polygon points="10 8 16 12 10 16 10 8" />
+          </svg>
+          View
+        </span>
+        Opens rendered HTML — no R needed
+      </div>
+      <div class="legend-item">
+        <span class="badge badge-dl">
+          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          .Rmd
+        </span>
+        Download source to run locally
+      </div>
+      <div class="legend-item">
+        <span class="badge badge-slide">
+          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </svg>
+          Slides
+        </span>
+        Download presentation
+      </div>
     </div>
   </div>
-</div>
 
-<!-- INTRO -->
-<div class="section-label">Introduction</div>
-<div class="intro-wrap">
-  <div class="intro-card">
-    <div class="intro-icon">
-      <svg width="20" height="20" fill="none" stroke="#2D6A4F" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+  <!-- INTRO -->
+  <div class="section-label">Introduction</div>
+  <div class="intro-wrap">
+    <div class="intro-card">
+      <div class="intro-icon">
+        <svg width="20" height="20" fill="none" stroke="#2D6A4F" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      </div>
+      <div class="intro-content">
+        <h2>Combined Introduction</h2>
+        <p>Workshop overview, learning objectives, and context shared across all three sessions.</p>
+        <div class="file-list">
+          <a href="intro/IADR_2026.pptx" download class="pill">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download Slides
+          </a>
+          <a href="intro/overview.html" target="_blank" class="pill">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <polygon points="10 8 16 12 10 16 10 8" />
+            </svg>
+            View Overview
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEAKERS -->
+  <div class="section-label">Speaker Sessions</div>
+  <div class="speakers-wrap">
+
+    <!-- SPEAKER 1 -->
+    <div class="speaker-card">
+      <div class="speaker-number">Session 01</div>
+      <h2>Upul Cooray</h2>
+      <p class="topic">LMTP for Dental Public Health Research</p>
+      <div class="divider"></div>
+      <div class="files-label">Materials</div>
+      <div class="speaker-files">
+        <div class="file-row">
+          <div class="file-row-info">
+            <div class="file-row-title">Presentation & Analysis</div>
+            <div class="file-row-sub">speaker1/simplified_slides.qmd</div>
+          </div>
+          <div class="file-row-actions">
+            <a href="speaker1/simplified_slides.html" target="_blank" class="btn-view">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="10 8 16 12 10 16 10 8" />
+              </svg>
+              View
+            </a>
+            <a href="speaker1/simplified_slides.qmd" download class="btn-dl">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              .qmd
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPEAKER 2 -->
+    <div class="speaker-card">
+      <div class="speaker-number">Session 02</div>
+      <h2>Sharon Tan</h2>
+      <p class="topic">Causal Mediation Analysis</p>
+      <div class="divider"></div>
+      <div class="files-label">Materials</div>
+      <div class="speaker-files">
+        <div class="file-row">
+          <div class="file-row-info">
+            <div class="file-row-title">Presentation Slides</div>
+            <div class="file-row-sub">speaker2/Workshop_ST.pdf</div>
+          </div>
+          <div class="file-row-actions">
+            <a href="speaker2/Workshop_ST_clean.pdf" download class="btn-slide">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Slides
+            </a>
+          </div>
+        </div>
+        <div class="file-row">
+          <div class="file-row-info">
+            <div class="file-row-title">Analysis</div>
+            <div class="file-row-sub">speaker2/causal_mediation_workshop.qmd</div>
+          </div>
+          <div class="file-row-actions">
+            <a href="speaker2/causal_mediation_workshop.html" target="_blank" class="btn-view">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="10 8 16 12 10 16 10 8" />
+              </svg>
+              View
+            </a>
+            <a href="speaker2/causal_mediation_workshop.qmd" download class="btn-dl">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              .qmd
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPEAKER 3 -->
+    <div class="speaker-card">
+      <div class="speaker-number">Session 03</div>
+      <h2>Li Huihua</h2>
+      <p class="topic">Modelling contextual effect</p>
+      <div class="divider"></div>
+      <div class="files-label">Materials</div>
+      <div class="speaker-files">
+        <div class="file-row">
+          <div class="file-row-info">
+            <div class="file-row-title">Presentation Slides</div>
+            <div class="file-row-sub">speaker3/Workshop_LH.pdf</div>
+          </div>
+          <div class="file-row-actions">
+            <a href="speaker3/IADR ContextualEffects_Handson_27March2026.pdf" download class="btn-slide">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Slides
+            </a>
+          </div>
+        </div>
+        <div class="file-row">
+          <div class="file-row-info">
+            <div class="file-row-title">Analysis</div>
+            <div class="file-row-sub">speaker3/contextual_effect_workshop.qmd</div>
+          </div>
+          <div class="file-row-actions">
+            <a href="speaker3/contextual_effect_workshop.html" target="_blank" class="btn-view">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="10 8 16 12 10 16 10 8" />
+              </svg>
+              View
+            </a>
+            <a href="speaker3/contextual_effect_workshop.qmd" download class="btn-dl">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              .qmd
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPEAKER 4 -->
+    <div class="speaker-card">
+      <div class="speaker-number">Session 04</div>
+      <h2>Ruby Clde</h2>
+      <p class="topic">Integrating Consumer Lived Experiences and Stakeholder Perspectives in Policy Simulation</p>
+      <div class="divider"></div>
+      <div class="files-label">Materials</div>
+      <div class="speaker-files">
+        <div class="file-row">
+          <div class="file-row-info">
+            <div class="file-row-title">Presentation Slides</div>
+            <div class="file-row-sub">speaker4/Workshop_RC.pdf</div>
+          </div>
+          <div class="file-row-actions">
+            <a href="speaker4/Workshop_RC.pdf" download class="btn-slide">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Slides
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DOWNLOAD ALL -->
+  <div class="dl-all-wrap">
+    <a href="all_materials.zip" download class="dl-all-btn">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="7 10 12 15 17 10" />
+        <line x1="12" y1="15" x2="12" y2="3" />
       </svg>
-    </div>
-    <div class="intro-content">
-      <h2>Combined Introduction</h2>
-      <p>Workshop overview, learning objectives, and context shared across all three sessions.</p>
-      <div class="file-list">
-        <a href="intro/introduction.pptx" download class="pill">
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Slides
-        </a>
-        <a href="intro/overview.html" target="_blank" class="pill">
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-          View Overview
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SPEAKERS -->
-<div class="section-label">Speaker Sessions</div>
-<div class="speakers-wrap">
-
-  <!-- SPEAKER 1 -->
-  <div class="speaker-card">
-    <div class="speaker-number">Session 01</div>
-    <h2>Upul Cooray</h2>
-    <p class="topic">LMTP for Dental Public Health Research</p>
-    <div class="divider"></div>
-    <div class="files-label">Materials</div>
-    <div class="speaker-files">
-      <div class="file-row">
-        <div class="file-row-info">
-          <div class="file-row-title">Presentation & Analysis</div>
-          <div class="file-row-sub">speaker1/simplified_slides.qmd</div>
-        </div>
-        <div class="file-row-actions">
-          <a href="speaker1/simplified_slides.html" target="_blank" class="btn-view">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-            View
-          </a>
-          <a href="speaker1/simplified_slides.qmd" download class="btn-dl">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            .qmd
-          </a>
-        </div>
-      </div>
-    </div>
+      Download All Materials (.zip)
+    </a>
   </div>
 
-  <!-- SPEAKER 2 -->
-  <div class="speaker-card">
-    <div class="speaker-number">Session 02</div>
-    <h2>Sharon Tan</h2>
-    <p class="topic">Causal Mediation Analysis</p>
-    <div class="divider"></div>
-    <div class="files-label">Materials</div>
-    <div class="speaker-files">
-      <div class="file-row">
-        <div class="file-row-info">
-          <div class="file-row-title">Presentation Slides</div>
-          <div class="file-row-sub">speaker2/Workshop_ST.pdf</div>
-        </div>
-        <div class="file-row-actions">
-          <a href="speaker2/Workshop_ST.pdf" download class="btn-slide">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Slides
-          </a>
-        </div>
-      </div>
-      <div class="file-row">
-        <div class="file-row-info">
-          <div class="file-row-title">Analysis</div>
-          <div class="file-row-sub">speaker2/causal_mediation_workshop.qmd</div>
-        </div>
-        <div class="file-row-actions">
-          <a href="speaker2/causal_mediation_workshop.html" target="_blank" class="btn-view">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-            View
-          </a>
-          <a href="speaker2/causal_mediation_workshop.qmd" download class="btn-dl">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            .qmd
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SPEAKER 3 -->
-  <div class="speaker-card">
-    <div class="speaker-number">Session 03</div>
-    <h2>Li Huihua</h2>
-    <p class="topic">Modelling contextual effect</p>
-    <div class="divider"></div>
-    <div class="files-label">Materials</div>
-    <div class="speaker-files">
-      <div class="file-row">
-        <div class="file-row-info">
-          <div class="file-row-title">Presentation Slides</div>
-          <div class="file-row-sub">speaker3/Workshop_LH.pdf</div>
-        </div>
-        <div class="file-row-actions">
-          <a href="speaker3/Workshop_LH.pdf" download class="btn-slide">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Slides
-          </a>
-        </div>
-      </div>
-      <div class="file-row">
-        <div class="file-row-info">
-          <div class="file-row-title">Analysis</div>
-          <div class="file-row-sub">speaker3/contextual_effect_workshop.qmd</div>
-        </div>
-        <div class="file-row-actions">
-          <a href="speaker3/contextual_effect_workshop.html" target="_blank" class="btn-view">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-            View
-          </a>
-          <a href="speaker3/contextual_effect_workshop.qmd" download class="btn-dl">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            .qmd
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SPEAKER 4 -->
-  <div class="speaker-card">
-    <div class="speaker-number">Session 04</div>
-    <h2>Ruby Clde</h2>
-    <p class="topic">Integrating Consumer Lived Experiences and Stakeholder Perspectives in Policy Simulation</p>
-    <div class="divider"></div>
-    <div class="files-label">Materials</div>
-    <div class="speaker-files">
-      <div class="file-row">
-        <div class="file-row-info">
-          <div class="file-row-title">Presentation Slides</div>
-          <div class="file-row-sub">speaker4/Workshop_RC.pdf</div>
-        </div>
-        <div class="file-row-actions">
-          <a href="speaker4/Workshop_RC.pdf" download class="btn-slide">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Slides
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- DOWNLOAD ALL -->
-<div class="dl-all-wrap">
-  <a href="all_materials.zip" download class="dl-all-btn">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Download All Materials (.zip)
-  </a>
-</div>
-
-<footer>
-  Workshop · All rights reserved · Questions? Contact the organiser.
-</footer>
+  <footer>
+    Workshop · All rights reserved · Questions? Contact the organiser.
+  </footer>
 
 </body>
+
 </html>
