@@ -1,5 +1,5 @@
 ---
-title: "caries_mediation_workshop"
+title: "IADR 2026 Workshop- Causal Mediation Analysis"
 author: "Sharon Tan"
 date: "2026-03-20"
 format:
@@ -9,7 +9,7 @@ format:
 ---
 
 <div style="text-align: center;">
-  <iframe src="Workshop_ST.pdf" width="100%" height="500px">
+  <iframe src="Workshop_ST_clean.pdf" width="100%" height="500px">
   </iframe>
 </div>
 

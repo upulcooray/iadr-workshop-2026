@@ -1,5 +1,5 @@
 ---
-title: "Modelling contextual effect"
+title: "IADR 2026 Workshop - Modelling contextual effect"
 author: "Li Huihua"
 date: "2026-03-27"
 format:
@@ -9,7 +9,7 @@ format:
 ---
 
 <div style="text-align: center;">
-  <iframe src="Workshop_LH.pdf" width="100%" height="500px">
+  <iframe src="IADR ContextualEffects_Handson_27March2026.pdf" width="100%" height="500px">
   </iframe>
 </div>
 

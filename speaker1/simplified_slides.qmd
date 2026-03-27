@@ -107,9 +107,52 @@ dental_data_shifted <- dental_data |>
 
 
 
-## {background-image="image2.png" background-size="contain" background-color="#1a252f"}
+## {background-image="intro_title.png" background-size="contain" background-color="#1a252f"}
 
 ---
+
+## Session Objectives
+
+::::{.columns}
+:::{.column width="50%" style="font-size:1.5em;"}
+In this workshop, we will discuss how rigor in applied epidemiological methods, combined with qualitative stakeholder involvement, can generate useful and realistic policy insights.
+:::
+
+:::{.column width="50%"}
+
+![](objectives.png){style="border-radius: 5px; border: 2px solid #94ccf1ff;"}
+:::
+::::
+
+## Modified Treatment Policies
+
+**Presenter:** Upul
+
+Demonstrates how to operationalize policy emulation using Modified Treatment Policies (MTPs). 
+- Using a dynamic shifts in continuous exposures, providing a methodologically rigorous alternative to static intervention causal frameworks.
+
+## Causal Mediation Analysis
+
+**Presenter:** Sharon
+
+Will focus on identifying the mechanisms through which an exposure translates to an observed outcome. 
+- Demonstrate utilizing causal mediation approaches, decompose total effects to understand structural pathways driving oral health inequalities.
+
+## Contextual Effects
+
+**Presenter:** Huihua
+
+Will detail the methodological requirements for properly isolating contextual effects, demonstrating how higher-level ecological conditions systematically influence individual-level conditions and individual-level outcomes.
+
+## Stakeholder and Consumer Integration
+
+**Presenter:** Ruby
+
+Will bridge methodological simulation with applied policy formulation. By integrating consumer lived experiences and established stakeholder perspectives, we ensure that the resulting causal models directly map to actionable, culturally relevant policy priorities.
+
+
+## {background-image="image2.png" background-size="contain" background-color="#1a252f"}
+
 
 
 ## The Policymaker's Dilemma {background-color="#1a252f"}
@@ -512,6 +555,17 @@ plot_density |>
 ```
 
 
+```{r}
+#| echo: true
+
+policy_reduce_20 <- function(data, trt) {
+  a <- data[[trt]]
+  ifelse(a > 50, a - 20, a)
+}
+```
+
+
+
 ::: {.incremental}
 - Mirrors a **realistic public health intervention** (e.g., sugar tax, labelling policy)
 - Stays within the support of the observed data ✅
@@ -555,7 +609,7 @@ dental_data |>
 
 ::::{.columns}
 
-:::{.column width="50%" style="font-size:1em;"}
+:::{.column width="50%" style="font-size:0.9em;"}
 
 1. **Split data** → "Practice on half, test on half"
 2. **Model treatment** → "Learn who eats how much sugar"
@@ -566,7 +620,6 @@ dental_data |>
 ```{r}
 #| echo: true
 #| output-location: fragment
-#| code-line-numbers: "1-10|12-13"
 
 fit_obs <- lmtp_tmle(
   data         = dental_data,
@@ -596,7 +649,7 @@ tidy(fit_obs)
 ```{r}
 #| echo: true
 #| output-location: fragment
-#| code-line-numbers: "1-11|12-13"
+
 fit_mtp_20 <- lmtp_tmle(
   data         = dental_data,
   trt          = "sugar_consumption",
@@ -618,25 +671,63 @@ tidy(fit_mtp_20)
 ::::
 
 
+## The Causal Contrasts
+
+Absolute causal contrasts
+```{r}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "1-2|1-5"
+
+# Additive causal contrasts: E[Y^d] - E[Y^obs]
+contrast_20 <- lmtp_contrast(fit_mtp_20, ref = fit_obs, type = "additive")
+
+contrast_20$estimates |> mutate(Policy = "Reduce 20g if >50g")|>
+select(Policy, estimate, conf.low, conf.high)
+
+```
+:::{.fragment}
+Relative  causal contrasts
+```{r}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "1-2|1-5"
+
+# Relative causal contrasts: E[Y^d] / E[Y^obs]
+contrast_20_rr <- lmtp_contrast(fit_mtp_20, ref = fit_obs, type = "rr")
+
+contrast_20_rr$estimates |> mutate(Policy = "Reduce 20g if >50g")|>
+select(Policy, estimate, conf.low, conf.high)
+
+```
+:::
 
 
 ## Interpreting the Answers
 
 ::: {style="background-color: #eafaf1; padding: 1em; border-radius: 8px; border-left: 5px solid #27ae60;"}
-**In the real world:** X% have cavities
+**In the real world:** 10.4% (estimate of fit_obs= 0.104) have tooth decay  
 :::
 
 ::: {style="background-color: #fef9e7; padding: 1em; border-radius: 8px; border-left: 5px solid #f39c12; margin-top: 0.5em;"}
-**If we reduced sugar by 20g for heavy eaters:** Y% would have cavities
+**If we reduced sugar by 20g for heavy eaters:** 7.5% (fit_mtp_20 estimate=0.0756) would have tooth decay
 
-**That's a Z percentage point DROP in cavities!**
+**That's a 2.8% point DROP (or 1-0.756 = 0.244 , i.e, 24.4% reduced risk) in tooth decay!**
 :::
+
+::: {.fragment style="background-color: #eaa42399; padding: 1em; border-radius: 8px; border-left: 5px solid #ef4d20ff; margin-top: 0.5em;"}
+
+**CAUTION:** given exchangeability, positivity, & consistancy
+
+:::
+
+
 
 ---
 
-## Assumptions (Plain English)
+## Assumptions
 
-| Assumption | Plain English |
+| Assumption | Simple explanation |
 |-----------|---------------|
 | Positivity | "The policy is realistic - everyone can actually do it" |
 | No hidden factors | "We measured the important factors (income, age, etc.)" |
